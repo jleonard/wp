@@ -1,0 +1,28 @@
+<?php 
+	global $post;
+	$_args = $args["args"];
+  	$mb = $_args["metabox"];
+  	$options = explode(",",$mb->select_options);
+  	$value = get_post_meta($post->ID,$mb->name,true);
+  	if(empty($value)){
+
+  		if($mb->name == "date"){
+  			$value = date("Y-m-d",strtotime($post->post_date));
+  		}else{
+  			$value = date("Y-m-d");
+  		}
+  		
+  	}
+
+?>
+<div class="frog_metabox">
+<h5 class='instructions'><?php echo $mb->instructions; ?></h5>
+
+<input 
+	type='date'
+	name="<?php echo $mb->name; ?>" 
+	value='<?php echo $value; ?>'
+	placeholder= '<?php echo $mb->placeholder_text; ?>'
+	 />
+
+</div>

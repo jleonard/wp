@@ -1,0 +1,14 @@
+## Synopsis
+
+This plugin includes functionality for configuring custom metaboxes in the CMS and assigning them to pages and post types
+
+Plugin functionality includes -
+* Addition of a Create Metabox page accessible via the sidebar
+* Addition of an Assign Metabox page accessible via the sidebar
+* Forms to create and assign metaboxes for input, textarea, select menus, radio groups, checkboxes and dates
+
+
+## Issues
+
+Issues should be logged at https://tracker.frogdesign.com/ for the CORPSITEEXT
+project

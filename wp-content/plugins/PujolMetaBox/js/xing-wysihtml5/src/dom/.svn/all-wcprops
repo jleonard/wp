@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom
+END
+insert.js
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/insert.js
+END
+has_element_with_class_name.js
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/has_element_with_class_name.js
+END
+observe.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/observe.js
+END
+class.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/class.js
+END
+remove_empty_text_nodes.js
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/remove_empty_text_nodes.js
+END
+parse.js
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/parse.js
+END
+has_element_with_tag_name.js
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/has_element_with_tag_name.js
+END
+delegate.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/delegate.js
+END
+resolve_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/resolve_list.js
+END
+insert_css.js
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/insert_css.js
+END
+copy_styles.js
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/copy_styles.js
+END
+convert_to_list.js
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/convert_to_list.js
+END
+contains.js
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/contains.js
+END
+text_content.js
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/text_content.js
+END
+copy_attributes.js
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/copy_attributes.js
+END
+rename_element.js
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/rename_element.js
+END
+auto_link.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/auto_link.js
+END
+simulate_placeholder.js
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/simulate_placeholder.js
+END
+sandbox.js
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/sandbox.js
+END
+set_styles.js
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/set_styles.js
+END
+get_style.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/get_style.js
+END
+get_parent_element.js
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/get_parent_element.js
+END
+get_as_dom.js
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/get_as_dom.js
+END
+replace_with_child_nodes.js
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/replace_with_child_nodes.js
+END
+set_attributes.js
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/dom/set_attributes.js
+END

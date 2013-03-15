@@ -1,0 +1,94 @@
+#PujolMetabox_new label{
+	display:block;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+
+#PujolMetabox_new div{
+	margin-bottom:8px;
+}
+
+#PujolMetabox_new h5{
+	margin:0px;
+}
+
+#PujolMetabox_new input[type='text'],#PujolMetabox_new input[type='number']{
+		height: 24px;
+}
+
+#PujolMetabox_new input[type='radio']{
+	margin-bottom:5px;
+	margin-right:5px;
+}
+
+#PujolMetabox_new .box-type{
+	display:none;
+}
+
+#PujolMetabox_new .textarea{
+	display: block;
+}
+
+/* admin results table */
+
+#PujolMetabox_new table tr.apply-all{
+	background-color: #C3E4ED;
+}
+#PujolMetabox_new table input,#PujolMetabox_new table textarea{
+	width: 130px;
+}
+#PujolMetabox_new table select{
+	width: 90px;
+}
+
+#PujolMetabox_new table input[type='number']{
+	width:55px;
+}
+
+/* assignments */
+#PujolMetabox_manage table tr.apply-all{
+	background-color:#C3E4ED;
+}
+#PujolMetabox_manage #post{
+	display:block;
+}
+#PujolMetabox_manage table{
+	display:none;
+}
+#PujolMetabox_manage td, #PujolMetabox_manage th{
+	font-size:11px;
+	/* max-width: 15px */
+}
+
+/* metaboxes */
+.Pujol_metabox textarea{
+	width:98%;
+}
+
+.Pujol_metabox textarea.l{
+	height:20em;
+}
+
+.Pujol_metabox textarea.s{
+	height:4em;
+}
+
+.Pujol_metabox input[type="date"], .Pujol_metabox input[type="number"], .Pujol_metabox select{
+	width: 100px;
+	display: block;
+}
+.Pujol_metabox input[type="date"]{
+	height: 28px;
+}
+
+.Pujol_metabox input[type="number"]{
+	width: 60px;
+	margin-left:8px;
+}
+
+.Pujol_metabox select{
+	float: none;
+	display: block;
+	width:100px;
+	/* margin-left:8px; */
+}

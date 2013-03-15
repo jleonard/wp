@@ -1,0 +1,212 @@
+<?php
+
+/*
+
+Plugin Name: Frog MetaBox
+Plugin URI: http://www.frogdesign.com
+Description: A plugin for creating and assigning metaboxes
+Author: frog
+Version: 0.3 
+Author URI: http://www.frogdesign.com 
+
+
+- 4 types
+ -> textarea (l-m)
+ -> input
+ -> date
+ -> date range
+ -> select
+ -> radio
+
+
+ frog_metaboxes
+
+ id 
+ name
+ display
+ metabox_type
+ instructions
+ character_limit (for textareas)
+ default_text_value
+ defaut_checked_item
+ page_position
+ placeholder_text
+
+
+ frog_metabox_assignments
+
+*/
+
+ 	function FrogMetabox_get_db_table(){
+		//global $wpdb;
+		return "frog_metaboxes";
+	}
+
+	function FrogMetabox_register_capabilities(){
+      do_action('FrogRoles_register_capability','create_frog_metaboxes',"Edit Metaboxes","","Advanced");
+      do_action('FrogRoles_register_capability','assign_frog_metaboxes',"Assign Metaboxes","","Advanced");
+  }
+  add_action("wp_loaded","FrogMetabox_register_capabilities");
+
+	function FrogMetaboxes_plugin_install(){
+ 
+	  global $wpdb;
+	  global $wp_roles;
+	  
+	  $table_name = FrogMetabox_get_db_table();
+
+	  $sql = "CREATE TABLE $table_name (
+	    id mediumint(9) NOT NULL AUTO_INCREMENT,
+	    character_limit text NULL,
+	    default_checked_item mediumint(9) NULL DEFAULT 0,
+	    display_name text NULL,
+	    instructions text NULL,
+	    metabox_type text NULL,
+	    name tinytext NULL,
+	    select_options text NULL,
+	    page_position text NULL,
+	    placeholder_text text NULL,
+	    textarea_size text NULL,
+	    UNIQUE KEY id (id)
+	    );";
+
+	  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+	  dbDelta($sql);
+	}
+	register_activation_hook(__FILE__,'FrogMetaboxes_plugin_install');
+
+
+	function FrogMetaboxes_menu_page(){
+  	include("include/metabox_admin.php");
+	}
+	function FrogMetaboxes_assign_page(){
+		include("include/metabox_assignments.php");
+	}
+	function FrogMetaboxes_admin_actions() {
+		if(current_user_can("create_frog_metaboxes")){
+			add_menu_page( "Create_Metaboxes", "Create Metaboxes", 1, "FrogMetaboxes_slug", "FrogMetaboxes_menu_page" );
+		}
+		if(current_user_can("assign_frog_metaboxes")){
+			add_menu_page( "Assign_Metaboxes", "Assign Metaboxes", 1, "FrogMetaboxes_assign_slug", "FrogMetaboxes_assign_page" );
+		}
+	}  
+	add_action('admin_menu', 'FrogMetaboxes_admin_actions');
+
+	function FrogMetaboxes_admin_scripts_method(){
+		
+		wp_register_script('FrogMetaboxes_js',plugins_url("js/admin.js",__FILE__ ));
+		wp_enqueue_script("FrogMetaboxes_js");
+
+		wp_register_script('FrogMetaboxes_assignments_js',plugins_url("js/assignments.js",__FILE__ ));
+		wp_enqueue_script("FrogMetaboxes_assignments_js");
+
+		wp_register_script('FrogMetaboxes_wysiwyg_init_js',plugins_url("js/wysiwyg-init.js",__FILE__ ));
+		wp_enqueue_script("FrogMetaboxes_wysiwyg_init_js");
+
+		wp_register_style( 'FrogMetaboxes_css', plugins_url("style.css",__FILE__ ), false, '1.0.0' );
+		wp_enqueue_style( 'FrogMetaboxes_css' );
+
+	}
+
+	add_action('admin_enqueue_scripts', 'FrogMetaboxes_admin_scripts_method',2);
+
+
+	function FrogMetaboxes_createFormName($str){
+		$str = trim($str);
+		$name = str_replace(" ","_",$str);
+  		$name = ereg_replace("[^A-Za-z._]", "", $name );
+  		$sql_name = str_replace(".","",$name);
+  		return strtolower($sql_name);
+	}
+
+	function FrogMetaboxes_renderboxes(){
+		global $wpdb;
+		global $post;
+		$post_type = $post->post_type;
+		$table_name = FrogMetabox_get_db_table();
+		$metaboxes = $wpdb->get_results( "SELECT * FROM $table_name" );
+		//add_meta_box( $id, $title, $callback, $post_type, $context, $priority, $callback_args );
+		foreach($metaboxes as $metabox){
+
+			$applied_to_all = get_option("apply_to_all_".$post->post_type."_".$metabox->id);
+			$has = get_post_meta($post->ID,"frog_metabox_".$metabox->id,true);
+			
+			if($applied_to_all || !empty($has)){
+				$_title = stripslashes($metabox->display_name);
+				add_meta_box($metabox->name,$_title,"FrogMetaboxes_metabox",$post->post_type,$metabox->page_position,'default',array("metabox"=>$metabox));
+			}
+
+		}
+	}
+	add_action('add_meta_boxes', 'FrogMetaboxes_renderboxes');
+
+	function FrogMetaboxes_metabox($post,$args){
+		$_args = $args["args"];
+  		$mb = $_args["metabox"];
+	  	switch($mb->metabox_type){
+	  		case "textarea":
+	  			include("include/textarea.php");
+	  		break;
+	  		case "input":
+	  			include("include/input.php");
+	  		break;
+	  		case "radio":
+	  			include("include/radio.php");
+	  		break;
+	  		case "select":
+	  			include("include/select.php");
+	  		break;
+	  		case "date":
+	  		 	include("include/date.php");
+	  		break;
+	  		case "number":
+	  			include("include/input_number.php");
+	  		break;
+	  		case "checkbox":
+	  			include("include/checkbox.php");
+	  		break;
+	  	}
+	}
+
+	/* insert post hook */
+function FrogMetaboxes_insert_post_hook($id,$post){
+  
+	  if($post->post_status == "inherit"){
+	      return;
+	  }
+	  
+	  global $wpdb;
+	  global $post;
+
+	  $table_name = FrogMetabox_get_db_table();
+	  $metaboxes = $wpdb->get_results( "SELECT * FROM $table_name" );
+
+	  $cache = wp_cache_get( "post_object" );
+	  if( !$cache ){
+	    $cache = array();
+	  }
+
+	  foreach($metaboxes as $metabox){
+	    
+	  	if(!empty($_POST[$metabox->name])){
+	  		$clean = stripslashes($_POST[$metabox->name]);
+	  		update_post_meta($post->ID,$metabox->name,$clean);
+	    	$cache[$metabox->name] = $clean;
+	    }else{
+	    	delete_post_meta($post->ID,$metabox->name);
+	    }
+	  }
+	  wp_cache_set('post_object', $cache);
+	}
+	add_action("wp_insert_post", "FrogMetaboxes_insert_post_hook", 5, 2 );
+
+	function _randomID($len){
+  		$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  		$string = '';
+		 for ($i = 0; $i < $len; $i++) {
+		      $string .= $characters[rand(0, strlen($characters) - 1)];
+		 }
+		 return $string;
+  	}
+
+?>

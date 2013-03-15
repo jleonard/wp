@@ -1,0 +1,94 @@
+#FrogMetabox_new label{
+	display:block;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+
+#FrogMetabox_new div{
+	margin-bottom:8px;
+}
+
+#FrogMetabox_new h5{
+	margin:0px;
+}
+
+#FrogMetabox_new input[type='text'],#FrogMetabox_new input[type='number']{
+		height: 24px;
+}
+
+#FrogMetabox_new input[type='radio']{
+	margin-bottom:5px;
+	margin-right:5px;
+}
+
+#FrogMetabox_new .box-type{
+	display:none;
+}
+
+#FrogMetabox_new .textarea{
+	display: block;
+}
+
+/* admin results table */
+
+#FrogMetabox_new table tr.apply-all{
+	background-color: #C3E4ED;
+}
+#FrogMetabox_new table input,#FrogMetabox_new table textarea{
+	width: 130px;
+}
+#FrogMetabox_new table select{
+	width: 90px;
+}
+
+#FrogMetabox_new table input[type='number']{
+	width:55px;
+}
+
+/* assignments */
+#FrogMetabox_manage table tr.apply-all{
+	background-color:#C3E4ED;
+}
+#FrogMetabox_manage #post{
+	display:block;
+}
+#FrogMetabox_manage table{
+	display:none;
+}
+#FrogMetabox_manage td, #FrogMetabox_manage th{
+	font-size:11px;
+	/* max-width: 15px */
+}
+
+/* metaboxes */
+.frog_metabox textarea{
+	width:98%;
+}
+
+.frog_metabox textarea.l{
+	height:20em;
+}
+
+.frog_metabox textarea.s{
+	height:4em;
+}
+
+.frog_metabox input[type="date"], .frog_metabox input[type="number"], .frog_metabox select{
+	width: 100px;
+	display: block;
+}
+.frog_metabox input[type="date"]{
+	height: 28px;
+}
+
+.frog_metabox input[type="number"]{
+	width: 60px;
+	margin-left:8px;
+}
+
+.frog_metabox select{
+	float: none;
+	display: block;
+	width:100px;
+	/* margin-left:8px; */
+}

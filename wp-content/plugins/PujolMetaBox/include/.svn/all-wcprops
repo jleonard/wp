@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include
+END
+metabox_assignments.php
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/metabox_assignments.php
+END
+date.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/date.php
+END
+textarea.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/textarea.php
+END
+radio.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/radio.php
+END
+input.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/input.php
+END
+select.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/select.php
+END
+checkbox.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/checkbox.php
+END
+input_number.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/input_number.php
+END
+metabox_admin.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/metabox_admin.php
+END
+metabox_assignments_old.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/include/metabox_assignments_old.php
+END

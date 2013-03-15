@@ -1,0 +1,21 @@
+<?php
+	global $post;
+	$_args = $args["args"];
+  	$mb = $_args["metabox"];
+
+  	$checked = get_post_meta($post->ID,$mb->name,true);
+?>
+<div class="frog_metabox">
+<h5 class='instructions'><?php echo $mb->instructions; ?></h5>
+<input 
+	type='checkbox'
+	name="<?php echo $mb->name; ?>" 
+	value='1'
+	<?php
+		if($checked == 1){
+			echo " checked='checked' ";
+		}
+	?>
+	 />
+	&nbsp;&nbsp;<?php echo $mb->select_options; ?>
+</div>

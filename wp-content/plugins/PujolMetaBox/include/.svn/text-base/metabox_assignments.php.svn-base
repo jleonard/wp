@@ -1,0 +1,225 @@
+<?php
+	global $wpdb;
+	$table_name = FrogMetabox_get_db_table();
+
+	if($_SERVER['REQUEST_METHOD'] == "POST"){
+		FrogMetabox_updateAttachmentForm();
+  }
+
+  $all_post_types;
+  $all_post_types = get_post_types('','objects');
+
+  $metaboxes = $wpdb->get_results( "SELECT * FROM $table_name" );
+
+?>
+<div id="FrogMetabox_manage" class='wrap'>
+	<?php echo "<h2>" . __( 'Assign Metaboxes', 'FrogMetaboxes_trdom' ) . "</h2>"; ?>
+	<form method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+		<p class="submit FrogMetaboxes_submit">
+    	<input type="submit" name="Submit" class="button-primary" value="<?php _e('Update', 'FrogMetaboxes_trdom' ) ?>" />  
+ 	 </p>
+ 	 <select id="table-toggle">
+  	<?php 
+  	foreach($all_post_types as $post_type){
+  		if($post_type->name == "revision" || $post_type->name == "nav_menu_item"){
+  			continue;
+  		}
+  	?>
+  	<option value="<?php echo $post_type->name;?>"><?php echo $post_type->labels->name; ?></option>
+  	<?php } ?>
+  </select>
+
+  <?php 
+	foreach($all_post_types as $post_type){
+		if($post_type->name == "revision" || $post_type->name == "nav_menu_item" || $post_type->name=="attachment"){
+  		continue;
+  	}
+  	
+  	?>
+		<table id="<?php echo $post_type->name;?>" class="table table-condensed table-bordered">
+			<thead>
+				<tr>
+					<th colspan="<?php echo count($metaboxes) + 1; ?>">
+						<h4><?php echo $post_type->labels->name; ?></h4>
+					</th>
+				</tr>
+				<tr>
+					<th>Page Title</th>
+					<?php foreach($metaboxes as $metabox ){
+						?>
+					<th><?php echo $metabox->display_name; ?><br/>(<?php echo $metabox->metabox_type; ?>)
+					<?php } ?>
+					</th>
+				</tr>
+				<tr class="apply-all">
+					<th>Apply to all</th>
+					<?php $col = 0; foreach($metaboxes as $metabox ){
+						$applied_to_all = get_option("apply_to_all_".$post_type->name."_".$metabox->id);
+
+						$checked = "";
+						if($applied_to_all == "1"){
+							error_log("APPLIED TO ALL ".$post_type->name. " ".$metabox->display_name);
+							$checked = " checked ";
+						}
+						?>
+						<th class="apply-all" data-col='<?php echo $col; $col++;?>'>
+							<input class='apply-all' 
+							id="apply_all_<?php echo $post_type->name; echo "_"; echo $metabox->id; ?>" 
+							data-metabox="<?php echo $metabox->id; ?>" 
+							data-type='<?php echo $post_type->name; ?>'
+							 type='checkbox' value='1'
+							 name="apply_to_all_<?php echo $post_type->name; ?>_<?php echo $metabox->id; ?>"
+							  <?php echo $checked; ?>
+							  />
+						</th>
+					<?php } ?>
+				</tr>
+			</thead>
+
+			<tbody>
+				<?php 
+				$pname = $post_type->name;
+				$continue = false;
+				switch($pname){
+					case "post":
+					case "press_release":
+					case "feature_story":
+					case "feature_video":
+					case "employee_story":
+					case "bio":
+					case "emergency_messaging":
+					case "timeline_item":
+					case "awards_recognition":
+					case "business":
+					case "tv_station":
+						$continue = true;
+					break;
+				}
+				if($continue){ continue; }
+				$args=array(
+            'post_type' => $pname,
+            'posts_per_page' => -1,
+            'orderby' => 'title', 
+            'order' => 'DESC'
+          );
+          $my_query = null;
+          $my_query = new WP_Query($args);
+          if( $my_query->have_posts() ) {
+	          while ($my_query->have_posts()) : $my_query->the_post(); ?>
+	          	<tr>
+	          		<td><?php the_title(); ?></td>
+	            <?php $col = 0; foreach($metaboxes as $metabox ){
+								$applied_to_all = get_option("apply_to_all_".$post_type->name."_".$metabox->id);
+								$has = get_post_meta(get_the_ID(),"frog_metabox_".$metabox->id,true);
+
+	            	$checked = "";
+								if(($applied_to_all == 1) || !empty($has)){
+									$checked = " checked ";
+								}
+								
+	            	?>
+							<td>
+								<input 
+								class='metabox_check' 
+								name="frog_metabox_<?php echo get_the_ID();?>_<?php echo $metabox->id;?>" 
+								data-metabox="<?php echo $metabox->id; ?>" 
+								data-type='<?php echo get_post_type(get_the_ID()); ?>' type='checkbox' value='1' 
+								<?php echo $checked; ?>
+								/>
+							</td>
+							<?php } ?>
+						</tr>
+	         <?php endwhile;
+	       }
+	         wp_reset_query();
+	        }?>
+			</tbody>
+		</table>
+
+	</form>
+</div>
+
+<?php 
+	function FrogMetabox_updateAttachmentForm(){
+		global $wpdb;
+
+		$all_post_types;
+  	$all_post_types = get_post_types('','objects');
+  	$table_name = FrogMetabox_get_db_table();
+ 	 	$metaboxes = $wpdb->get_results( "SELECT * FROM $table_name" );
+
+ 	 	foreach($all_post_types as $post_type){
+			$pname = $post_type->name;
+		  $args=array(
+        'post_type' => $pname,
+        'posts_per_page' => -1,
+        'orderby' => 'title', 
+        'order' => 'DESC'
+      );
+
+		  $continue = false;
+      foreach($metaboxes as $metabox){
+      	$global_key = "apply_to_all_".$post_type->name."_".$metabox->id;
+      	if(!empty($_POST[$global_key])){
+    			update_option($global_key,"1");
+    			$continue = true;
+    		}else{
+    			delete_option($global_key);
+    		}
+      }
+      if($continue){ continue; }
+
+      $my_query = null;
+      $my_query = new WP_Query($args);
+      if( $my_query->have_posts() ) {
+        while ($my_query->have_posts()) : $my_query->the_post();
+        	foreach($metaboxes as $metabox){
+        		$field = "frog_metabox_".get_the_ID()."_".$metabox->id;
+        		if(!empty($_POST[$field])){
+        			update_post_meta(get_the_ID(),"frog_metabox_".$metabox->id,"1");
+        		}else{
+        			delete_post_meta(get_the_ID(),"frog_metabox_".$metabox->id);
+        		}
+        	}
+        endwhile;
+      }
+    }
+    return;
+		// old
+		foreach($all_post_types as $post_type){
+			$pname = $post_type->name;
+		  $args=array(
+        'post_type' => $pname,
+        'posts_per_page' => -1,
+        'orderby' => 'title', 
+        'order' => 'DESC'
+      );
+      $my_query = null;
+      $my_query = new WP_Query($args);
+      if( $my_query->have_posts() ) {
+        while ($my_query->have_posts()) : $my_query->the_post(); error_log($pname);
+        	foreach($metaboxes as $metabox){
+        		$field = "frog_metabox_".get_the_ID()."_".$metabox->id;
+        		if(!empty($_POST[$field])){
+        			update_post_meta(get_the_ID(),"frog_metabox_".$metabox->id,"1");
+        		}else{
+        			delete_post_meta(get_the_ID(),"frog_metabox_".$metabox->id);
+        		}
+
+        		$global_key = "apply_to_all_".$post_type->name."_".$metabox->id;
+        		//error_log($global_key);
+
+        		if(!empty($_POST[$global_key])){
+        			//error_log("UPDATE GLOBAL KEY ".$global_key);
+			  			update_option($global_key,"1");
+			  		}else{
+			  			//error_log("DELETE GLOBAL KEY ".$global_key);
+			  			delete_option($global_key);
+			  		}
+
+        	}
+        endwhile;
+      }
+		}
+	}
+?>

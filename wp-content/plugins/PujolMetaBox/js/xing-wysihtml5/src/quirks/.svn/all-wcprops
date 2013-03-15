@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks
+END
+redraw.js
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks/redraw.js
+END
+clean_pasted_html.js
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks/clean_pasted_html.js
+END
+insert_line_break_on_return.js
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks/insert_line_break_on_return.js
+END
+ensure_proper_clearing.js
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks/ensure_proper_clearing.js
+END
+get_correct_inner_html.js
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/repos/!svn/ver/869/branches/corporate-trunk/wordpress/wp-content/plugins/FrogMetaBox/js/xing-wysihtml5/src/quirks/get_correct_inner_html.js
+END
